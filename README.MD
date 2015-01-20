@@ -43,14 +43,14 @@ ooc可能是我（注：原作者）最得意的成果，但同时，对我来�
 
 在ooc的标准库（注：在ooc里，标准库被称作sdk），我们是怎么做的呢？我们用了一些小技俩（cheating）。你应该记得我说过，在运行时，我们只知道泛型的地址和类型。好的，我们可以这么写：
 
-add: func <T> (a, b: T) -> T {
-	match T {
-		case Int =>
-			a as Int + b as Int
-		case =>
-		 	Exception new("Don't know how to add type #{T name}") throw()
+	add: func <T> (a, b: T) -> T {
+		match T {
+			case Int =>
+				a as Int + b as Int
+			case =>
+				Exception new("Don't know how to add type #{T name}") throw()
+		}
 	}
-}
 
 现在，很多人会开始认为这是一个十分糟糕的设计，我（注：原作者）甚至不应该称这个为“泛型”，等等。但这就是它的工作原理。纵使向6年前的我抱怨为什么选了这么一种设计，对我来说也没有任何意义。我仅仅是在试着解释它的工作原理，从而消除未来可能发生的误解。
 
